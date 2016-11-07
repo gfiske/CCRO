@@ -1,3 +1,7 @@
+#gfiske
+#November 2016
+#CCRO project
+
 # import the modules
 try:
     import urllib
@@ -32,7 +36,7 @@ chdb_passwd = chdb_passwd.strip("'")
 
 
 #########################################
-#          PULL FROM TURBINE       #
+#       PULL FROM CASCADE DEVICE        #
 #########################################
 
 url = "https://www.dropbox.com/s/24cmcg6zsakxn8w/Quashnet-001?dl=1"
