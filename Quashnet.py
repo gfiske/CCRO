@@ -45,14 +45,17 @@ data = u.read()
 u.close()
 
 date, time, temp = data.split()
-
+dateTime = date + " " + time
 #convert temp to decimal value
-temp = int(temp) * 0.01 
+temp = int(temp) * 0.001 
+
+
+
 
 #print "date: " + date
 #print "time: " + time
 #print "temperature: " + str(temp)
-
+#print "dateTime"
 
 #########################################
 #            Update Sheet               #
@@ -60,9 +63,8 @@ temp = int(temp) * 0.01
 
 
 try:
-    #----------------------------
     #enter the data into the google spreadsheet
-    rowToAdd = (date, time, str(temp))
+    rowToAdd = (date, time, str(temp), dateTime, str(temp))
     json_key = json.load(open('/home/gfiske/Data/python_scripts/raspPi-e0a08639ebab.json'))
     scope = ['https://spreadsheets.google.com/feeds']
     credentials = SignedJwtAssertionCredentials(json_key['client_email'], json_key['private_key'], scope)
