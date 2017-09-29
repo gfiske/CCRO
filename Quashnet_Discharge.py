@@ -32,7 +32,7 @@ discharge = tree[1][2][0].text
 
 
 #print discharge
-timestamp = time.strftime('%m/%d/%Y') + "_" + time.strftime('%H:%M:%S')
+timestamp = time.strftime('%m/%d/%Y') + " " + time.strftime('%H:%M:%S')
 #print timestamp
 
 ## Update the spreadsheet
@@ -42,7 +42,7 @@ try:
         scope = ['https://spreadsheets.google.com/feeds']
         credentials = SignedJwtAssertionCredentials(json_key['client_email'], json_key['private_key'], scope)
         g = gspread.authorize(credentials)
-        worksheet = g.open('QuashnetDischarge').get_worksheet(0)
+        worksheet = g.open('QuashnetDischarge2').get_worksheet(0)
         worksheet.append_row(rowToAdd)
 except:
         print "cannot update spreadsheet"
