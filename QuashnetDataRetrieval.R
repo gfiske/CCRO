@@ -2,8 +2,9 @@
 #collects historic discharge data from the USGS gauging station on the Quashnet River in Massachusetts
 #CCRO project
 #October 3, 2017
+#reference: https://owi.usgs.gov/R/dataRetrieval.html
 
-#to install package
+#install package
 ##install.packages (c("dataRetrieval","EGRET"))
 
 #load library

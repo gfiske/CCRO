@@ -42,7 +42,7 @@ try:
         scope = ['https://spreadsheets.google.com/feeds']
         credentials = SignedJwtAssertionCredentials(json_key['client_email'], json_key['private_key'], scope)
         g = gspread.authorize(credentials)
-        worksheet = g.open('QuashnetDischarge2').get_worksheet(0)
+        worksheet = g.open('QuashnetDischarge3').get_worksheet(0)
         worksheet.append_row(rowToAdd)
 except:
         print "cannot update spreadsheet"
