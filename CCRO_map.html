@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<style type="text/css">
+    .info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+.legend .circle {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin-top: 8px;
+}
+</style>
+
+<title>CCRO Map</title>
+
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+//leaflet CCRO map (with legend)
+
+//var myColor = "#0000ff"
+var myColor = "#0a60c3"
+
+var geojson = {
+  "type": "FeatureCollection",
+  "features": [{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.4823, 41.6419]
+      },
+      "properties": {
+        "GPSId": "2",
+        "Date": "6/16/2016",
+        "GPSUserName": "ID: MR-1",
+        "GPSUserColor": myColor,
+        "MAP_LABEL": 'Mashpee River MR-1'
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.4839, 41.6293]
+      },
+      "properties": {
+        "GPSId": "2",
+        "Date": "9/20/2016",
+        "GPSUserName": "ID: MR-2",
+        "GPSUserColor": myColor,
+        "MAP_LABEL": 'Mashpee River MR-2'
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.4524, 41.6383]
+      },
+      "properties": {
+        "GPSId": "2",
+        "Date": "5/20/2016",
+        "GPSUserName": "ID: SR-1",
+        "GPSUserColor": myColor,
+        "MAP_LABEL": 'Santuit River SR-1'
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.4510, 41.6278]
+      },
+      "properties": {
+        "GPSId": "2",
+        "Date": "5/20/2016",
+        "GPSUserName": "ID: SR-2",
+        "GPSUserColor": myColor,
+        "MAP_LABEL": 'Santuit River SR-2'
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.5077, 41.5923]
+      },
+      "properties": {
+        "GPSId": "2",
+        "Date": "5/20/2016",
+        "GPSUserName": "ID: QR-1",
+        "GPSUserColor": myColor,
+        "MAP_LABEL": 'Quashnet River QR-1'
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.6286, 41.6241]
+      },
+      "properties": {
+        "GPSId": "2",
+        "Date": "5/20/2016",
+        "GPSUserName": "ID: HR-1",
+        "GPSUserColor": myColor,
+        "MAP_LABEL": 'Herring Brook HR-1'
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.6358, 41.7679]
+      },
+      "properties": {
+        "GPSId": "2",
+        "Date": "5/20/2016",
+        "GPSUserName": "ID: RB-1",
+        "GPSUserColor": myColor,
+        "MAP_LABEL": 'Red Brook RB-1'
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.5726, 41.5852]
+      },
+      "properties": {
+        "GPSId": "2",
+        "Date": "5/20/2016",
+        "GPSUserName": "ID: CR-1",
+        "GPSUserColor": myColor,
+        "MAP_LABEL": 'Coonamessett River CR-1'
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.5719, 41.6002]
+      },
+      "properties": {
+        "GPSId": "2",
+        "Date": "5/20/2016",
+        "GPSUserName": "ID: CR-2",
+        "GPSUserColor": myColor,
+        "MAP_LABEL": 'Coonamessett River CR-2'
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.7633, 41.7785]
+      },
+      "properties": {
+        "GPSId": "2",
+        "Date": "1/9/2018",
+        "GPSUserName": "ID: WR-1",
+        "GPSUserColor": myColor,
+        "MAP_LABEL": 'Weweantic River WR-1'
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.6070, 41.6967]
+      },
+      "properties": {
+        "GPSId": "2",
+        "Date": "1/9/2018",
+        "GPSUserName": "ID: PR-1",
+        "GPSUserColor": myColor,
+        "MAP_LABEL": 'Pocasset River PR-1'
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.4139, 41.6525]
+      },
+      "properties": {
+        "GPSId": "2",
+        "Date": "5/20/2016",
+        "GPSUserName": "ID: MM-1",
+        "GPSUserColor": myColor,
+        "MAP_LABEL": 'Marstons Mills River MM-1'
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.79432, 41.73389]
+      },
+      "properties": {
+        "GPSId": "2",
+        "Date": "5/20/2018",
+        "GPSUserName": "ID: SP-1",
+        "GPSUserColor": myColor,
+        "MAP_LABEL": 'Sippican River SP-1'
+      }
+    }
+
+  ],
+  "name": "Points",
+  "keyField": "GPSUserName"
+};
+
+geojsonLayer = L.geoJson(geojson, {
+  style: function(feature) {
+    return {
+      color: feature.properties.GPSUserColor
+    };
+  },
+  pointToLayer: function(feature, latlng) {
+    return new L.CircleMarker(latlng, {
+      radius: 7,
+      fillOpacity: 0.75
+    });
+  },
+  onEachFeature: function(feature, layer) {
+    //layer.bindPopup(feature.properties.GPSUserName);
+    layer.bindTooltip(feature.properties.MAP_LABEL, {opacity:0.8});
+    }
+});
+
+
+
+var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+  '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+  'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+  mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ2Zpc2tlLXdocmMiLCJhIjoiY2s4aXdpYWdnMGFwejNncW9ueTl1ODA5ZCJ9.cdEhouG-8PZe9n8fXPmYlA';
+
+var grayscale = L.tileLayer(mbUrl, {
+    id: 'mapbox/dark-v10',
+    attribution: mbAttr
+  }),
+  streets = L.tileLayer(mbUrl, {
+    id: 'mapbox/streets-v11',
+    attribution: mbAttr
+  }),
+   sat = L.tileLayer(mbUrl, {
+    id: 'mapbox/satellite-v9',
+    attribution: mbAttr
+  });
+
+var mymap = L.map('mapid', {
+  center: [41.74, -70.42],
+  zoom: 11,
+  scrollWheelZoom: true,
+  layers: [sat, geojsonLayer]
+});
+
+var baseLayers = {
+  "Grayscale": grayscale,
+  "Streets": streets,
+  "Satellite": sat
+};
+
+var overlays = {
+  "Rivers": geojsonLayer
+};
+
+L.control.layers(baseLayers, overlays).addTo(mymap);
+
+
+
+
+$(window).on("resize", function() {
+  $("#mapid").height($(window).height()).width($(window).width());
+  mymap.invalidateSize();
+}).trigger("resize");
+
+});//]]>
+
+</script>
+</head>
+<body>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<div id='mapid'></div>
+
+<script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "ksx600sn"
+    }], "*")
+  }
+</script>
+</body>
+</html>
